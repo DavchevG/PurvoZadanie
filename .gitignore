@@ -1,0 +1,35 @@
+# Ignore build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+*.dll
+*.exe
+*.obj
+*.pdb
+*.cache
+*.log
+*.vs/
+.vscode/
+*.dbmdl
+*.suo
+*.user
+*.userosscache
+*.suo
+*.wixproj
+*.nupkg
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.suo
+*.wixproj
+*.dbmdl
+
+# OS-specific files
+.DS_Store
+Thumbs.db
