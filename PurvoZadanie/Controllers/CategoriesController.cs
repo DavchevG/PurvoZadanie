@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PurvoZadanie.Data;
 using PurvoZadanie.Models;
@@ -23,13 +24,16 @@ public class CategoriesController : Controller
     // GET: Categories/Create
     public IActionResult Create()
     {
+        // Извличане на всички категории
+        var categories = _context.Categories.ToList();
+        ViewBag.Categories = new SelectList(categories, "Id", "Name"); // Създаване на SelectList
         return View();
     }
 
     // POST: Categories/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Name,DisplayOrder")] Category category)
+    public async Task<IActionResult> Create([Bind("Id,DisplayOrder")] Category category)
     {
         if (ModelState.IsValid)
         {
@@ -37,6 +41,8 @@ public class CategoriesController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        var categories = _context.Categories.ToList();
+        ViewBag.Categories = new SelectList(categories, "Id", "Name"); // Предаване на категориите отново
         return View(category);
     }
 }
